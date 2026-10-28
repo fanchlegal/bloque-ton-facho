@@ -36,6 +36,8 @@ Firefox peut demander l'accès aux sites à part :
 
 Puis recharge l'onglet Threads.
 
+Astuce : clique sur l'icône pièce de puzzle 🧩 en haut à droite de Firefox et épingle Threads Quick Block pour garder son icône visible.
+
 ## Mise à jour
 
 - Temporaire : `about:debugging` → **Recharger** (ou recharge le nouveau `.xpi`).
