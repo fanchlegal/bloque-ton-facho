@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 280" width="440" height="280">
+  <!-- Vignette promotionnelle du Chrome Web Store. PNG : rsvg-convert promo-440x280.svg -o promo-440x280.png -->
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2b2b33"/>
+      <stop offset="1" stop-color="#111114"/>
+    </linearGradient>
+    <linearGradient id="red" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ff4a5c"/>
+      <stop offset="1" stop-color="#d9142e"/>
+    </linearGradient>
+  </defs>
+  <rect width="440" height="280" fill="url(#bg)"/>
+  <rect x="0" y="0" width="6" height="280" fill="url(#red)"/>
+
+  <!-- Bouclier de l'icône, agrandi -->
+  <g transform="translate(20 50) scale(2.4)">
+    <path d="M64 34 L88 43 V62 C88 78 78 89 64 95 C50 89 40 78 40 62 V43 Z" fill="#ffffff" transform="translate(-24 -26)"/>
+    <circle cx="40" cy="37" r="15" fill="url(#red)"/>
+    <rect x="30.5" y="34" width="19" height="6" rx="3" fill="#ffffff"/>
+  </g>
+
+  <g font-family="Helvetica Neue, Helvetica, Arial, sans-serif" fill="#ffffff">
+    <text x="200" y="118" font-size="34" font-weight="700">Bloque</text>
+    <text x="200" y="156" font-size="34" font-weight="700">ton facho</text>
+    <text x="201" y="190" font-size="14" fill="#c9c9d1">Bloquer, sourdine, signaler</text>
+    <text x="201" y="209" font-size="14" fill="#c9c9d1">en un clic sur Threads</text>
+  </g>
+</svg>
