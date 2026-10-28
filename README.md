@@ -8,8 +8,8 @@ Version 0.7.1 · Chrome / Chromium et Firefox · Threads sur ordinateur (pas l'a
 
 | Navigateur | Fichier | Guide |
 |---|---|---|
-| Chrome, Edge, Brave, Opera, Arc… | [`chrome/bloque-ton-facho.zip`](chrome/bloque-ton-facho.zip) | [Installer sur Chrome](chrome/README.md) |
-| Firefox 142+ | [`firefox/bloque-ton-facho-firefox.xpi`](firefox/bloque-ton-facho-firefox.xpi) | [Installer sur Firefox](firefox/README.md) |
+| Chrome, Edge, Brave, Opera, Arc… | [`dist/chrome/bloque-ton-facho.zip`](dist/chrome/bloque-ton-facho.zip) | [Installer sur Chrome](dist/chrome/README.md) |
+| Firefox 142+ | [`dist/firefox/bloque-ton-facho-firefox.xpi`](dist/firefox/bloque-ton-facho-firefox.xpi) | [Installer sur Firefox](dist/firefox/README.md) |
 
 L'extension n'est pas (encore) sur le Chrome Web Store ni sur addons.mozilla.org : elle s'installe à la main, en quelques clics.
 
@@ -58,4 +58,30 @@ L'extension n'a accès qu'à `threads.com` / `threads.net`. Tes réglages sont s
 
 ## Si ça ne marche plus
 
-Threads change régulièrement son interface. En cas de message rouge d'erreur, fais l'action à la main pour cette fois et ouvre une issue en indiquant l'action et le message. Les libellés à ajuster sont dans `content.js` : `MORE_LABELS`, `ACTIONS[...].menu`, et pour le signalement `FAKE_PATTERNS`, `PARENT_PATTERNS`, `SUBMIT_WORDS`.
+Threads change régulièrement son interface. En cas de message rouge d'erreur, fais l'action à la main pour cette fois et ouvre une issue en indiquant l'action et le message. Les libellés à ajuster sont dans `src/content.js` : `MORE_LABELS`, `ACTIONS[...].menu`, et pour le signalement `FAKE_PATTERNS`, `PARENT_PATTERNS`, `SUBMIT_WORDS`.
+
+## Code source
+
+Le code est le même pour Chrome et Firefox, dans [`src/`](src) :
+
+```
+src/
+├── manifest.json   déclaration de l'extension (Manifest V3)
+├── content.js      boutons sur Threads, actions, mots-clés
+├── popup.html/js   fenêtre de réglages
+├── styles.css      style des boutons et des messages
+└── icons/
+```
+
+Pour tester une modification sans rien empaqueter :
+
+- **Firefox** : `about:debugging#/runtime/this-firefox` → **Charger un module complémentaire temporaire…** → `src/manifest.json`.
+- **Chrome** : `chrome://extensions` → **Charger l'extension non empaquetée** → dossier `src/` (Chrome signale la clé `browser_specific_settings`, propre à Firefox : c'est sans conséquence).
+
+Pour regénérer les deux paquets après une modification (pense à monter `version` dans `src/manifest.json`) :
+
+```bash
+./build.sh
+```
+
+Le script produit `dist/chrome/bloque-ton-facho.zip` (sans la clé Firefox) et `dist/firefox/bloque-ton-facho-firefox.xpi`. Il demande `zip` et `python3`.

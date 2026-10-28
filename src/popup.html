@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Bloque ton facho</title>
+  <style>
+    :root { color-scheme: light dark; --accent: #ff3040; --muted: #888; }
+    body { width: 340px; margin: 0; padding: 14px; font: 13px system-ui, sans-serif; }
+    h1 { font-size: 15px; margin: 0 0 10px; }
+    label.block { display: block; font-weight: 600; margin: 10px 0 4px; }
+    textarea { width: 100%; box-sizing: border-box; height: 130px; font: 12px ui-monospace, monospace; padding: 6px; border-radius: 6px; }
+    .hint { color: var(--muted); font-size: 11px; margin-top: 3px; }
+    .row { display: flex; align-items: center; gap: 6px; margin: 6px 0; }
+    button { cursor: pointer; border: 0; border-radius: 6px; padding: 7px 12px; font-weight: 600; }
+    #save { background: var(--accent); color: #fff; }
+    #saved { color: green; margin-left: 8px; opacity: 0; transition: opacity .2s; }
+    .actions { display: flex; align-items: center; margin-top: 10px; }
+    hr { border: 0; border-top: 1px solid rgba(128,128,128,.3); margin: 14px 0; }
+    ul { list-style: none; padding: 0; margin: 6px 0; max-height: 160px; overflow: auto; }
+    li { display: flex; justify-content: space-between; padding: 3px 0; border-bottom: 1px solid rgba(128,128,128,.15); }
+    li a { color: inherit; }
+    li span { color: var(--muted); font-size: 11px; }
+    .small { font-size: 11px; padding: 4px 8px; }
+  </style>
+</head>
+<body>
+  <h1>⛔ Bloque ton facho</h1>
+
+  <label class="block" for="keywords">Mots-clés à surligner</label>
+  <textarea id="keywords" placeholder="Un par ligne (mots, hashtags, emojis)"></textarea>
+  <div class="hint">Un par ligne. Insensible à la casse et aux accents. Les mots sont matchés en entier ; emojis et symboles par simple présence. Analyse : pseudo, nom affiché et texte des posts visibles.</div>
+
+  <div class="row"><input type="checkbox" id="highlight"><label for="highlight">Surligner les posts correspondants</label></div>
+  <div class="row"><input type="checkbox" id="showReply"><label for="showReply">Bouton 💬 Répondre avec une phrase aléatoire</label></div>
+  <div class="row"><input type="checkbox" id="showAll"><label for="showAll">Bouton ⚡ Tout enchaîner (signaler → sourdine → bloquer)</label></div>
+  <div class="row"><input type="checkbox" id="showBlock"><label for="showBlock">Bouton ⛔ Bloquer</label></div>
+  <div class="row"><input type="checkbox" id="showMute"><label for="showMute">Bouton 🔇 Mettre en sourdine</label></div>
+  <div class="row"><input type="checkbox" id="showReport"><label for="showReport">Bouton 🚩 Signaler comme faux compte</label></div>
+  <div class="row"><input type="checkbox" id="confirmEach"><label for="confirmEach">Demander confirmation avant chaque action</label></div>
+
+  <label class="block" for="replies">Phrases de réponse 💬</label>
+  <textarea id="replies" placeholder="Une phrase par ligne" style="height:90px"></textarea>
+  <div class="hint">Une par ligne, tirée au hasard (jamais deux fois de suite la même). Varie-les : des réponses identiques en série peuvent être vues comme du spam.</div>
+
+  <div class="row"><label for="hourlyLimit">Alerte au-delà de</label><input type="number" id="hourlyLimit" min="0" step="5" style="width:60px"><span>actions / heure</span></div>
+  <div class="hint">0 = pas d'alerte. Meta ne publie aucun seuil : c'est un garde-fou à ta main.</div>
+
+  <div class="actions"><button id="save">Enregistrer</button><span id="saved">✓ Enregistré</span></div>
+
+  <hr>
+  <div class="row" style="justify-content: space-between;">
+    <strong>Historique (<span id="count">0</span>)</strong>
+    <span>
+      <button id="export" class="small">Exporter</button>
+      <button id="clear" class="small">Vider</button>
+    </span>
+  </div>
+  <ul id="history"></ul>
+  <div class="hint">L'historique est local : le vider ne débloque ni ne réactive personne sur Threads.</div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

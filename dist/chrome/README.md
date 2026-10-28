@@ -33,4 +33,4 @@ Tes réglages (mots-clés, phrases, historique) sont conservés.
 - Recharge l'onglet Threads (les boutons n'apparaissent pas sur un onglet ouvert avant l'installation).
 - Si Chrome affiche « Erreurs » sur la carte de l'extension, clique dessus et ouvre une issue avec le message.
 
-Voir le [README principal](../README.md) pour l'utilisation.
+Voir le [README principal](../../README.md) pour l'utilisation.

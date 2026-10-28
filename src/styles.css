@@ -1,0 +1,76 @@
+.tqb-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  margin-left: 8px;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+.tqb-group[data-kw]::before {
+  content: attr(data-kw);
+  font: 600 11px system-ui, sans-serif;
+  color: #ff3040;
+  background: rgba(255, 48, 64, 0.15);
+  padding: 3px 6px;
+  border-radius: 6px;
+  margin-right: 2px;
+}
+
+.tqb-btn {
+  all: unset;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+  padding: 4px 6px;
+  border-radius: 8px;
+  opacity: 1;
+  background: rgba(128, 128, 128, 0.10);
+  transition: background 0.15s, transform 0.1s;
+}
+.tqb-btn:hover { background: rgba(128, 128, 128, 0.25); transform: scale(1.12); }
+
+.tqb-wait { filter: grayscale(0.6); }
+.tqb-busy { opacity: 1 !important; animation: tqb-pulse 0.8s ease-in-out infinite; }
+.tqb-done { opacity: 1 !important; background: rgba(0, 160, 80, 0.18) !important; }
+.tqb-error { opacity: 1 !important; outline: 2px solid #ff3040; }
+@keyframes tqb-pulse { 50% { opacity: 0.3; } }
+
+.tqb-flagged { box-shadow: inset 3px 0 0 #ff3040; }
+.tqb-blocked { opacity: 0.3; filter: grayscale(1); }
+.tqb-muted { opacity: 0.5; }
+
+.tqb-fab {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 2147483646;
+  margin: 0;
+  gap: 4px;
+  padding: 6px 8px;
+  border-radius: 999px;
+  background: #1f1f1f;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+}
+.tqb-fab .tqb-btn { opacity: 1; font-size: 18px; padding: 7px 9px; border-radius: 999px; }
+.tqb-fab .tqb-btn:hover { background: rgba(255, 255, 255, 0.15); }
+
+.tqb-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  transform: translate(-50%, 20px);
+  z-index: 2147483647;
+  padding: 10px 16px;
+  border-radius: 10px;
+  background: #222;
+  color: #fff;
+  font: 500 13px system-ui, sans-serif;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.tqb-toast.tqb-show { opacity: 1; transform: translate(-50%, 0); }
+.tqb-toast-error { background: #b3121f; }

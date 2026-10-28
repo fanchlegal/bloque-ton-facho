@@ -47,4 +47,4 @@ Astuce : clique sur l'icône pièce de puzzle 🧩 en haut à droite de Firefox 
 
 `about:addons` → **⋯** → **Supprimer**.
 
-Voir le [README principal](../README.md) pour l'utilisation.
+Voir le [README principal](../../README.md) pour l'utilisation.
