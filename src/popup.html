@@ -48,6 +48,13 @@
   <div class="actions"><button id="save">Enregistrer</button><span id="saved">✓ Enregistré</span></div>
 
   <hr>
+  <label class="block" for="bulkList">⛔ Bloquer une liste</label>
+  <textarea id="bulkList" placeholder="@pseudo, pseudo ou lien de profil, un par ligne" style="height:90px"></textarea>
+  <div class="hint">Traitée dans l'onglet Threads ouvert et visible : un compte toutes les 8 à 20 s, arrêt au plafond d'actions par heure ci-dessus ou après 5 échecs de suite. Relis toute liste reçue d'un tiers.</div>
+  <div class="actions"><button id="bulkStart">Lancer</button>&nbsp;<button id="bulkStop" class="small">Arrêter</button></div>
+  <div class="hint" id="bulkStatus"></div>
+
+  <hr>
   <div class="row" style="justify-content: space-between;">
     <strong>Historique (<span id="count">0</span>)</strong>
     <span>

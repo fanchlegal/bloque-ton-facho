@@ -33,6 +33,7 @@
       icon: '💬', verb: 'Répondre (phrase aléatoire)', done: 'a reçu ta réponse'
     }
   };
+  const UNBLOCK_LABELS = ['debloquer', 'unblock', 'desbloquear', 'blockierung aufheben', 'sblocca', 'deblokkeren'];
   const REPLY_LABELS = ['repondre', 'reply', 'responder', 'antworten', 'rispondi'];
   const SEND_LABELS = ['publier', 'repondre', 'post', 'reply', 'publicar', 'posten', 'pubblica'];
   // Ordre de la chaîne : signaler d'abord (le menu « … » disparaît une fois bloqué)
@@ -120,7 +121,10 @@
     compile();
   }
 
-  api.storage.onChanged.addListener(async () => { await load(); scan(true); });
+  api.storage.onChanged.addListener(async (changes) => {
+    if (changes.bulk) { runBulk(); if (Object.keys(changes).length === 1) return; }
+    await load(); scan(true);
+  });
 
   // ---------- Utilitaires DOM ----------
 
@@ -294,7 +298,9 @@
 
     const item = await waitFor(() => findClickable(exact(a.menu)));
     if (!item) {
+      const already = key === 'block' && findClickable(exact(UNBLOCK_LABELS));
       pressEscape();
+      if (already) { await sleep(250); throw new Error('déjà bloqué'); }
       await sleep(250);
       if (document.querySelector('[role="menu"]')) realClick(more);
       await sleep(250);
@@ -597,6 +603,74 @@
     run();
   }
 
+  // ---------- Blocage d'une liste (enregistrée par le popup dans storage.local.bulk) ----------
+
+  const BULK_DELAY_MS = [8000, 20000];
+  const BULK_MAX_FAILS = 5;
+  let bulkBusy = false;
+
+  async function updateBulk(fn) {
+    const { bulk } = await api.storage.local.get({ bulk: null });
+    if (bulk) await api.storage.local.set({ bulk: fn(bulk) });
+  }
+
+  // ponytail: tourne dans l'onglet Threads visible ; deux fenêtres visibles à la fois traiteraient
+  // la même liste en double (verrou partagé dans storage si ça arrive vraiment).
+  async function runBulk() {
+    if (bulkBusy || document.visibilityState !== 'visible') return;
+    bulkBusy = true;
+    let fails = 0;
+    try {
+      for (;;) {
+        const { bulk } = await api.storage.local.get({ bulk: null });
+        if (!bulk?.running || !bulk.list.length || document.visibilityState !== 'visible') break;
+        if (overHourlyLimit()) {
+          await updateBulk((b) => ({ ...b, running: false, note: `plafond de ${settings.hourlyLimit} actions / heure atteint` }));
+          toast(`Liste en pause : plafond de ${settings.hourlyLimit} actions / heure atteint`, true);
+          break;
+        }
+        while (running) await sleep(500); // laisse passer les clics faits à la main
+        const u = bulk.list[0];
+        const skip = done.block.has(u); // déjà bloqué via l'extension : pas d'action, pas de pause
+        let ok = skip;
+        if (!skip) {
+          running = true;
+          toast(`Liste : blocage de @${u} (${bulk.list.length} restants)`);
+          try {
+            await performAction('block', () => null, u);
+            ok = true;
+          } catch (e) {
+            ok = e.message === 'déjà bloqué';
+            if (!ok) toast(`Liste : échec pour @${u} : ${e.message}`, true);
+          } finally {
+            running = false;
+            lastActionAt = Date.now();
+            recent.push(lastActionAt);
+          }
+          if (ok) await record('block', u, 'liste');
+          fails = ok ? 0 : fails + 1;
+        }
+        await updateBulk((b) => ({
+          ...b,
+          list: b.list.filter((x) => x !== u),
+          blocked: b.blocked + (ok ? 1 : 0),
+          failed: ok ? b.failed : [...b.failed, u]
+        }));
+        if (skip) continue;
+        if (fails >= BULK_MAX_FAILS) {
+          await updateBulk((b) => ({ ...b, running: false, note: `${fails} échecs de suite` }));
+          toast(`Liste arrêtée après ${fails} échecs de suite`, true);
+          break;
+        }
+        if (bulk.list.length === 1) { toast('Liste terminée'); break; }
+        if (queue.length) await run();
+        await sleep(BULK_DELAY_MS[0] + Math.random() * (BULK_DELAY_MS[1] - BULK_DELAY_MS[0]));
+      }
+    } finally {
+      bulkBusy = false;
+    }
+  }
+
   // ---------- UI ----------
 
   function setStatus(btn, status) {
@@ -735,8 +809,11 @@
 
   // ---------- Démarrage ----------
 
+  document.addEventListener('visibilitychange', runBulk);
+
   load().then(() => {
     scan();
+    runBulk();
     let t;
     new MutationObserver(() => {
       clearTimeout(t);

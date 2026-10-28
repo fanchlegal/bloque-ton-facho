@@ -2,7 +2,7 @@
 
 Une extension de navigateur pour bloquer, mettre en sourdine ou signaler un compte **en un clic** sur [Threads](https://www.threads.com) (version web), et repérer les comptes selon tes propres mots-clés.
 
-Version 0.7.2 · Chrome / Chromium et Firefox · licence GPL-3.0 · Threads sur ordinateur (pas l'application mobile) · aucune donnée envoyée ailleurs.
+Version 0.8.0 · Chrome / Chromium et Firefox · licence GPL-3.0 · Threads sur ordinateur (pas l'application mobile) · aucune donnée envoyée ailleurs.
 
 ## Installation
 
@@ -46,10 +46,19 @@ Clique sur l'icône de l'extension pour :
 
 Pense à cliquer sur **Enregistrer** après une modification.
 
+### Bloquer une liste
+
+Dans le popup, colle une liste de comptes sous **⛔ Bloquer une liste** (`@pseudo`, `pseudo` ou lien de profil, un par ligne), puis clique sur **Lancer**. L'onglet Threads ouvert et visible ouvre chaque profil, le bloque, puis revient à ta page. **Arrêter** interrompt le traitement ; relancer la même liste saute les comptes déjà bloqués via l'extension.
+
+- Un compte toutes les 8 à 20 secondes.
+- Pause au plafond d'actions par heure (le même que l'alerte ci-dessous), arrêt après 5 échecs de suite.
+- Le traitement attend tant que l'onglet Threads est en arrière-plan.
+- Relis toute liste reçue d'un tiers : bloquer en masse se défait un compte à la fois.
+
 ## Garde-fous
 
 - 3 à 4 secondes minimum entre deux actions (les clics rapides sont mis en file d'attente).
-- Alerte au-delà de 40 actions par heure par défaut (réglable, 0 = désactivée). Meta ne publie aucun seuil officiel : c'est une limite de prudence, pas une garantie.
+- Alerte au-delà de 40 actions par heure par défaut (réglable, 0 = désactivée) ; c'est aussi le plafond du blocage d'une liste. Meta ne publie aucun seuil officiel : c'est une limite de prudence, pas une garantie.
 - Varie tes phrases de réponse : des messages identiques en série peuvent être pris pour du spam.
 
 ## Vie privée

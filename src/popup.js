@@ -65,4 +65,44 @@ $('export').addEventListener('click', async () => {
   a.click();
 });
 
+// ---------- Blocage d'une liste : le popup l'enregistre, l'onglet Threads la traite ----------
+
+function parseHandles(text) {
+  const handles = new Set();
+  const bad = [];
+  for (const raw of text.split(/[\s,;]+/).filter(Boolean)) {
+    const u = (raw.match(/threads\.(?:net|com)\/@([\w.]+)/i)?.[1] ?? raw.replace(/^@/, '')).toLowerCase();
+    if (/^[\w.]{1,30}$/.test(u)) handles.add(u); else bad.push(raw);
+  }
+  return { handles: [...handles], bad };
+}
+
+async function renderBulk() {
+  const { bulk } = await api.storage.local.get({ bulk: null });
+  if (!bulk) { $('bulkStatus').textContent = ''; return; }
+  const state = bulk.running ? (bulk.list.length ? 'en cours' : 'terminé') : 'à l’arrêt';
+  $('bulkStatus').textContent = `${state} · ${bulk.list.length} à traiter · ${bulk.blocked} bloqués` +
+    (bulk.failed.length ? ` · échecs : ${bulk.failed.map((u) => '@' + u).join(', ')}` : '') +
+    (bulk.note ? ` · ${bulk.note}` : '');
+}
+
+$('bulkStart').addEventListener('click', async () => {
+  const { handles, bad } = parseHandles($('bulkList').value);
+  if (!handles.length) { $('bulkStatus').textContent = 'Aucun compte valide dans la liste.'; return; }
+  const warn = bad.length ? `\n(${bad.length} entrées ignorées, ex. « ${bad[0]} »)` : '';
+  if (!confirm(`Bloquer ${handles.length} comptes sur Threads ?${warn}\n\nGarde un onglet Threads ouvert et visible pendant le traitement.`)) return;
+  await api.storage.local.set({ bulk: { list: handles, running: true, blocked: 0, failed: [], note: '' } });
+});
+
+$('bulkStop').addEventListener('click', async () => {
+  const { bulk } = await api.storage.local.get({ bulk: null });
+  if (bulk) await api.storage.local.set({ bulk: { ...bulk, running: false, note: 'arrêté' } });
+});
+
+api.storage.onChanged.addListener((changes) => {
+  if (changes.bulk) renderBulk();
+  if (changes.history) renderHistory();
+});
+
 init();
+renderBulk();
