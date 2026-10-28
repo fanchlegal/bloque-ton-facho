@@ -1,4 +1,4 @@
-# Threads Quick Block pour Firefox
+# Bloque ton facho pour Firefox
 
 Firefox 142 ou plus récent.
 
@@ -6,7 +6,7 @@ Firefox 142 ou plus récent.
 
 L'extension est retirée au redémarrage de Firefox.
 
-1. Télécharge [`threads-quick-block-firefox.xpi`](threads-quick-block-firefox.xpi) (bouton **Download raw file** sur la page GitHub).
+1. Télécharge [`bloque-ton-facho-firefox.xpi`](bloque-ton-facho-firefox.xpi) (bouton **Download raw file** sur la page GitHub).
 2. Ouvre `about:debugging#/runtime/this-firefox`.
 3. Clique **Charger un module complémentaire temporaire…** et choisis le fichier `.xpi`.
 4. Recharge l'onglet Threads.
@@ -32,11 +32,11 @@ Firefox (version standard) n'installe durablement que des extensions **signées 
 ## Si aucun bouton n'apparaît
 
 Firefox peut demander l'accès aux sites à part :
-`about:addons` → **Threads Quick Block** → onglet **Permissions** → autorise `threads.com` et `threads.net`.
+`about:addons` → **Bloque ton facho** → onglet **Permissions** → autorise `threads.com` et `threads.net`.
 
 Puis recharge l'onglet Threads.
 
-Astuce : clique sur l'icône pièce de puzzle 🧩 en haut à droite de Firefox et épingle Threads Quick Block pour garder son icône visible.
+Astuce : clique sur l'icône pièce de puzzle 🧩 en haut à droite de Firefox et épingle Bloque ton facho pour garder son icône visible.
 
 ## Mise à jour
 

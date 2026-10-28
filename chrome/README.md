@@ -1,14 +1,14 @@
-# Threads Quick Block pour Chrome
+# Bloque ton facho pour Chrome
 
 Fonctionne aussi sur les navigateurs basés sur Chromium : Edge, Brave, Opera, Vivaldi, Arc.
 
 ## Installation
 
-1. Télécharge [`threads-quick-block.zip`](threads-quick-block.zip) (bouton **Download raw file** sur la page GitHub).
-2. Décompresse le zip : tu obtiens un dossier `threads-quick-block`.
+1. Télécharge [`bloque-ton-facho.zip`](bloque-ton-facho.zip) (bouton **Download raw file** sur la page GitHub).
+2. Décompresse le zip : tu obtiens un dossier `bloque-ton-facho`.
 3. Ouvre `chrome://extensions` (`edge://extensions`, `brave://extensions`…).
 4. Active le **Mode développeur** (en haut à droite).
-5. Clique **Charger l'extension non empaquetée** et choisis le dossier `threads-quick-block`.
+5. Clique **Charger l'extension non empaquetée** et choisis le dossier `bloque-ton-facho`.
 6. Recharge l'onglet Threads.
 
 > Garde le dossier décompressé quelque part : si tu le supprimes, Chrome désactive l'extension.

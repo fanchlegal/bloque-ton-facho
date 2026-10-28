@@ -1,6 +1,6 @@
 # Bloque ton facho
 
-**Threads Quick Block** : une extension de navigateur pour bloquer, mettre en sourdine ou signaler un compte **en un clic** sur [Threads](https://www.threads.com) (version web), et repérer les comptes selon tes propres mots-clés.
+Une extension de navigateur pour bloquer, mettre en sourdine ou signaler un compte **en un clic** sur [Threads](https://www.threads.com) (version web), et repérer les comptes selon tes propres mots-clés.
 
 Version 0.7.0 · Chrome / Chromium et Firefox · Threads sur ordinateur (pas l'application mobile) · aucune donnée envoyée ailleurs.
 
@@ -8,8 +8,8 @@ Version 0.7.0 · Chrome / Chromium et Firefox · Threads sur ordinateur (pas l'a
 
 | Navigateur | Fichier | Guide |
 |---|---|---|
-| Chrome, Edge, Brave, Opera, Arc… | [`chrome/threads-quick-block.zip`](chrome/threads-quick-block.zip) | [Installer sur Chrome](chrome/README.md) |
-| Firefox 142+ | [`firefox/threads-quick-block-firefox.xpi`](firefox/threads-quick-block-firefox.xpi) | [Installer sur Firefox](firefox/README.md) |
+| Chrome, Edge, Brave, Opera, Arc… | [`chrome/bloque-ton-facho.zip`](chrome/bloque-ton-facho.zip) | [Installer sur Chrome](chrome/README.md) |
+| Firefox 142+ | [`firefox/bloque-ton-facho-firefox.xpi`](firefox/bloque-ton-facho-firefox.xpi) | [Installer sur Firefox](firefox/README.md) |
 
 L'extension n'est pas (encore) sur le Chrome Web Store ni sur addons.mozilla.org : elle s'installe à la main, en quelques clics.
 
