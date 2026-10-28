@@ -2,7 +2,7 @@
 
 Une extension de navigateur pour bloquer, mettre en sourdine ou signaler un compte **en un clic** sur [Threads](https://www.threads.com) (version web), et repérer les comptes selon tes propres mots-clés.
 
-Version 0.7.1 · Chrome / Chromium et Firefox · Threads sur ordinateur (pas l'application mobile) · aucune donnée envoyée ailleurs.
+Version 0.7.1 · Chrome / Chromium et Firefox · licence GPL-3.0 · Threads sur ordinateur (pas l'application mobile) · aucune donnée envoyée ailleurs.
 
 ## Installation
 
@@ -85,3 +85,7 @@ Pour regénérer les deux paquets après une modification (pense à monter `vers
 ```
 
 Le script produit `dist/chrome/bloque-ton-facho.zip` (sans la clé Firefox) et `dist/firefox/bloque-ton-facho-firefox.xpi`. Il demande `zip` et `python3`.
+
+## Licence
+
+[GPL-3.0](LICENSE) © 2026 Fanch. Tu peux utiliser, modifier et redistribuer ce code, à condition que les versions modifiées que tu diffuses restent sous la même licence, avec leur code source.
