@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Bloque ton facho",
-  "version": "0.7.1",
+  "version": "0.7.2",
   "description": "Bloquer, mettre en sourdine ou signaler en un clic sur Threads et surligner les comptes selon tes propres mots-clés.",
   "permissions": [
     "storage"

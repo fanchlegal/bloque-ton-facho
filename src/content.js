@@ -39,14 +39,19 @@
   const CHAIN = ['report', 'mute', 'block'];
 
   // Parcours de signalement : motif visé, catégorie parente éventuelle, boutons de validation
-  // (Threads FR, oct. 2026 : catégorie « Bot ou faux compte » au premier écran)
+  // (Threads FR, oct. 2026 : catégorie « Bot ou faux compte » au premier écran d'un post ;
+  // depuis un profil : « Signaler le compte » → « Publication de contenu qui ne devrait pas… »
+  // → « C'est un bot ou un faux compte »). Pas d'« usurpation » : ce parcours demande qui est imité.
   const FAKE_PATTERNS = [
-    'bot ou faux compte', 'faux compte', 'faux profil', 'compte frauduleux', 'se fait passer', 'usurp',
+    'bot ou faux compte', 'faux compte', 'faux profil', 'compte frauduleux',
     'bot', 'automatis', 'automated', 'bot or fake',
-    'fake account', 'fake profile', 'pretending to be', 'impersonat',
+    'fake account', 'fake profile',
     'cuenta falsa', 'perfil falso', 'fake-konto', 'gefalschtes', 'account falso'
   ];
-  const PARENT_PATTERNS = ['arnaque', 'fraude', 'spam', 'scam', 'fraud', 'estafa', 'betrug', 'truffa'];
+  const PARENT_PATTERNS = [
+    'signaler le compte', 'report account', 'qui ne devrait pas', 'shouldn',
+    'arnaque', 'fraude', 'spam', 'scam', 'fraud', 'estafa', 'betrug', 'truffa'
+  ];
   const SUBMIT_WORDS = ['envoyer', 'envoyer le signalement', 'signaler', 'submit', 'submit report', 'report', 'enviar', 'senden', 'invia'];
   const NEXT_WORDS = ['suivant', 'continuer', 'next', 'continue', 'siguiente', 'weiter', 'avanti'];
   const THANKS_PATTERNS = ['merci', 'thanks', 'thank you', 'gracias', 'danke', 'grazie'];

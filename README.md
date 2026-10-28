@@ -2,7 +2,7 @@
 
 Une extension de navigateur pour bloquer, mettre en sourdine ou signaler un compte **en un clic** sur [Threads](https://www.threads.com) (version web), et repérer les comptes selon tes propres mots-clés.
 
-Version 0.7.1 · Chrome / Chromium et Firefox · licence GPL-3.0 · Threads sur ordinateur (pas l'application mobile) · aucune donnée envoyée ailleurs.
+Version 0.7.2 · Chrome / Chromium et Firefox · licence GPL-3.0 · Threads sur ordinateur (pas l'application mobile) · aucune donnée envoyée ailleurs.
 
 ## Installation
 
