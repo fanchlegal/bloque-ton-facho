@@ -6,12 +6,12 @@ Version 0.8.0 · Chrome / Chromium et Firefox · licence GPL-3.0 · Threads sur 
 
 ## Installation
 
-| Navigateur | Fichier | Guide |
+| Navigateur | Installation | Guide |
 |---|---|---|
-| Chrome, Edge, Brave, Opera, Arc… | [`dist/chrome/bloque-ton-facho.zip`](dist/chrome/bloque-ton-facho.zip) | [Installer sur Chrome](dist/chrome/README.md) |
+| Chrome, Edge, Brave, Opera, Arc… | **[Chrome Web Store](https://chromewebstore.google.com/detail/bloque-ton-facho/mhdlfpdmopgadogfcacmpediglnchebk)** (en un clic, mises à jour automatiques) ou à la main : [`dist/chrome/bloque-ton-facho.zip`](dist/chrome/bloque-ton-facho.zip) | [Installer sur Chrome](dist/chrome/README.md) |
 | Firefox 142+ | [`dist/firefox/bloque-ton-facho-firefox.xpi`](dist/firefox/bloque-ton-facho-firefox.xpi) | [Installer sur Firefox](dist/firefox/README.md) |
 
-L'extension n'est pas (encore) sur le Chrome Web Store ni sur addons.mozilla.org : elle s'installe à la main, en quelques clics.
+Sur Chrome, passe par le [Chrome Web Store](https://chromewebstore.google.com/detail/bloque-ton-facho/mhdlfpdmopgadogfcacmpediglnchebk). La version du Store peut avoir un peu de retard sur ce dépôt, le temps que Google valide chaque mise à jour. Sur Firefox, l'extension n'est pas (encore) sur addons.mozilla.org : elle s'installe à la main, en quelques clics.
 
 ## Ce que ça fait
 

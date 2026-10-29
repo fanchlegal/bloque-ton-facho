@@ -2,7 +2,17 @@
 
 Fonctionne aussi sur les navigateurs basés sur Chromium : Edge, Brave, Opera, Vivaldi, Arc.
 
-## Installation
+## Installation depuis le Chrome Web Store (recommandé)
+
+1. Ouvre la fiche [Bloque ton facho sur le Chrome Web Store](https://chromewebstore.google.com/detail/bloque-ton-facho/mhdlfpdmopgadogfcacmpediglnchebk).
+2. Clique **Ajouter à Chrome** (sur Edge, autorise d'abord les extensions d'autres boutiques).
+3. Recharge l'onglet Threads.
+
+Les mises à jour se font toutes seules.
+
+## Installation à la main
+
+Pour avoir la toute dernière version du dépôt, avant sa validation sur le Store. Désinstalle d'abord la version du Store, pour ne pas avoir les boutons en double.
 
 1. Télécharge [`bloque-ton-facho.zip`](bloque-ton-facho.zip) (bouton **Download raw file** sur la page GitHub).
 2. Décompresse le zip : tu obtiens un dossier `bloque-ton-facho`.
@@ -15,7 +25,7 @@ Fonctionne aussi sur les navigateurs basés sur Chromium : Edge, Brave, Opera, V
 
 Astuce : épingle l'extension (icône puzzle 🧩 → punaise) pour accéder vite au popup de réglages.
 
-## Mise à jour
+## Mise à jour (installation à la main)
 
 1. Télécharge le nouveau zip et remplace l'ancien dossier par le nouveau (même emplacement).
 2. Dans `chrome://extensions`, clique ↻ sur la carte de l'extension.
@@ -25,7 +35,7 @@ Tes réglages (mots-clés, phrases, historique) sont conservés.
 
 ## Désinstallation
 
-`chrome://extensions` → **Supprimer** sur la carte de l'extension, puis supprime le dossier.
+`chrome://extensions` → **Supprimer** sur la carte de l'extension. Si tu l'avais installée à la main, supprime aussi le dossier.
 
 ## Si rien n'apparaît sur Threads
 
